@@ -25,13 +25,13 @@ import com.aventstack.extentreports.markuputils.MarkupHelper;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 import com.framework.Utilies.Constants;
-
-
+import com.framework.Utilies.Reports;
+import com.framework.listener.CustomListener;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BrowserSetup {
-	
+
 	public static WebDriver driver;
 	public ExtentSparkReporter spark;
 	public ExtentReports extent;
@@ -52,7 +52,7 @@ public class BrowserSetup {
 
 	@BeforeMethod
 	@Parameters("browser")
-	
+
 	public void beforeMethodMethod(String browser, Method getmethod) {
 		logger = extent.createTest(getmethod.getName());
 		try {
@@ -69,10 +69,12 @@ public class BrowserSetup {
 	@AfterMethod
 	public void afterMethodMethod(ITestResult result) {
 		if (result.getStatus() == ITestResult.FAILURE) {
+
+			String screenShotPath = Reports.capture(driver, result.getMethod().getMethodName());
 			logger.log(Status.FAIL, MarkupHelper.createLabel(result.getName() + "Test case failed", ExtentColor.RED));
 			logger.log(Status.FAIL,
 					MarkupHelper.createLabel(result.getThrowable() + "Test case failed", ExtentColor.RED));
-
+			logger.fail("Snapshot below: " + logger.addScreenCaptureFromPath(screenShotPath));
 		}
 
 		else if (result.getStatus() == ITestResult.SKIP) {
@@ -81,7 +83,7 @@ public class BrowserSetup {
 		} else if (result.getStatus() == ITestResult.SUCCESS) {
 			logger.log(Status.PASS,
 					MarkupHelper.createLabel(result.getName() + "Test case Success", ExtentColor.GREEN));
-			 driver.quit();
+			driver.quit();
 		}
 
 	}
@@ -96,7 +98,7 @@ public class BrowserSetup {
 			WebDriverManager.chromedriver().setup();
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("--remote-allow-origins=*");
-			driver = new ChromeDriver();
+			driver = new ChromeDriver(options);
 		} else if (browser.equalsIgnoreCase("firefox")) {
 			WebDriverManager.firefoxdriver().setup();
 			driver = new FirefoxDriver();

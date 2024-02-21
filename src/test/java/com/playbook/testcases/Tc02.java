@@ -64,6 +64,7 @@ public class Tc02 extends BrowserSetup {
 		Assert.assertEquals(true, playbook.createPlaybook().schedule().publish().isDisplayed());
 		playbook.createPlaybook().schedule().publish().click();
 		logger.info("Playbook Created successfully    "+name);  
+		
 		Assert.assertEquals(name, playbook.summary().getplaybookName().getText());
 		playbook.summary().viewDetails().click();
 		logger.info(name + " of Playbook Dashboard page Displayed"); 

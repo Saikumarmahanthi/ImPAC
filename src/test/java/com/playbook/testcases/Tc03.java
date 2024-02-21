@@ -1,12 +1,11 @@
 package com.playbook.testcases;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
-
 
 import com.framework.Baseclass.BrowserSetup;
 import com.framework.Pages.Playbook;
 import com.framework.Utilies.Authenticattion;
-
 
 public class Tc03 extends BrowserSetup {
 	@Test
@@ -18,7 +17,7 @@ public class Tc03 extends BrowserSetup {
 		Playbook playbook = new Playbook(driver);
 		playbook.listpage().search().click();
 		playbook.listpage().searchInput().setText("sElrsEavmq");
+		Assert.assertEquals(false, playbook.listpage().selectPlaybook("sElrsEavmq").isVisible());
 		playbook.listpage().selectPlaybook("sElrsEavmq").click();
 	}
-
 }

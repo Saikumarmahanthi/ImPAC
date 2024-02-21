@@ -4,21 +4,7 @@
   <listeners>
     <listener class-name="com.framework.listener.CustomListener"/>
   </listeners>
-  <test thread-count="5" name="Test1(failed)">
-    <parameter name="browser" value="edge"/>
-    <classes>
-      <class name="com.playbook.testcases.Tc03">
-        <methods>
-          <include name="afterTest"/>
-          <include name="beforeTestMethod"/>
-          <include name="afterMethodMethod"/>
-          <include name="runDetails"/>
-          <include name="beforeMethodMethod"/>
-        </methods>
-      </class> <!-- com.playbook.testcases.Tc03 -->
-    </classes>
-  </test> <!-- Test1(failed) -->
-  <test thread-count="5" name="Test3(failed)">
+  <test thread-count="5" name="dashboard(failed)">
     <parameter name="browser" value="chrome"/>
     <classes>
       <class name="com.playbook.testcases.Tc03">
@@ -31,5 +17,5 @@
         </methods>
       </class> <!-- com.playbook.testcases.Tc03 -->
     </classes>
-  </test> <!-- Test3(failed) -->
+  </test> <!-- dashboard(failed) -->
 </suite> <!-- Failed suite [Suite] -->
