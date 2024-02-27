@@ -12,11 +12,48 @@ public class Menu {
 		this.driver = driver;
 	}
 
-	public Button select(String label) {
+	public Button select() {
 		return new Button(driver, "");
 	}
 
-	public Dropdown playbookName(String label) {
+	public Dropdown playbookName() {
 		return new Dropdown(driver, "");
 	}
+
+	public Button dashboard() {
+		return new Button(driver, "");
+	}
+
+	public Button configuration() {
+		return new Button(driver, "");
+	}
+
+	public Button scores() {
+		return new Button(driver, "");
+	}
+
+	public Button policies() {
+		return new Button(driver, "");
+	}
+
+	public Button violations() {
+		return new Button(driver, "");
+	}
+
+	public Button changeLog() {
+		return new Button(driver, "");
+	}
+
+	public Button complianceImpact() {
+		return new Button(driver, "");
+	}
+
+	public Button runPlaybook() {
+		return new Button(driver, "");
+	}
+
+	public Button details() {
+		return new Button(driver, "");
+	}
+
 }

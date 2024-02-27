@@ -7,7 +7,6 @@ import org.openqa.selenium.WebElement;
 
 public class Checkboxs {
 	WebDriver driver;
-	// Button tabHeader;
 	WebElement element;
 
 	public Checkboxs(WebDriver driver, String locator) {

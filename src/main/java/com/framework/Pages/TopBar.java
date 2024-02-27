@@ -14,16 +14,27 @@ public class TopBar {
 		this.driver = driver;
 	}
 
-	public Button select(String label) {
-		return new Button(driver, "//div[text()='" + label + "']");
+	public Button home() {
+		return new Button(driver, PropertiesFile.getlocater("home"));
 	}
 
-	public TextField search() {
-		return new TextField(driver, PropertiesFile.getProperty(""));
+	public Button timeMachine() {
+		return new Button(driver, PropertiesFile.getlocater("timemachime"));
+	}
+
+	public Button playbook() {
+		return new Button(driver, PropertiesFile.getlocater("playbook"));
+	}
+	public Button viewAll() {
+		return new Button(driver, PropertiesFile.getlocater("viewall"));
 	}
 
 	public Dropdown playbookName(String name) {
 		return new Dropdown(driver, "//div[text()='" + name + "']");
+	}
+
+	public TextField search() {
+		return new TextField(driver, PropertiesFile.getProperty("search"));
 	}
 
 }

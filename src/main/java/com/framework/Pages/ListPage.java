@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 
 import com.framework.Baseclass.Button;
 import com.framework.Baseclass.TextField;
+import com.framework.Utilies.PropertiesFile;
 
 public class ListPage {
 
@@ -13,7 +14,11 @@ public class ListPage {
 	public ListPage(WebDriver driver) {
 		this.driver = driver;
 	}
-
+	
+	public TextField description() {
+		return new TextField(driver,PropertiesFile.getElement("desc"));
+	}
+	
 	public Button createPlayBook() {
 		return new Button(driver, "//img[@alt='createPlayicon']");
 	}

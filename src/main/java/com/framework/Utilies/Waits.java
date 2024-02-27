@@ -8,17 +8,20 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import com.framework.Baseclass.BrowserSetup;
+import com.framework.Baseclass.InvokeSetup;
 
-public class Waits extends BrowserSetup {
-	WebDriver driver;
-	public Waits(WebDriver driver) {
-		this.driver = driver;
-	}
+public class Waits extends InvokeSetup {
+	public static WebDriver driver;
 
-	public WebElement waituntill(int num, String Label) {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(num));
-		WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("" + Label + "")));
+	/*
+	 * This class is designed to wait for a specific duration of time before
+	 * throwing exceptions 
+	 * 
+	 */
+
+	public static WebElement waituntill(int time, String locator) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(time));
+		WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("" + locator + "")));
 		return element;
 	}
 }

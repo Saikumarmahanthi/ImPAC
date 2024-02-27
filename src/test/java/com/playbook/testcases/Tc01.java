@@ -1,25 +1,29 @@
 package com.playbook.testcases;
 
+import java.io.FileNotFoundException;
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import com.framework.Baseclass.BrowserSetup;
+import com.framework.Baseclass.InvokeSetup;
 import com.framework.Pages.Playbook;
-import com.framework.Utilies.Authenticattion;
+import com.framework.Utilies.Authentication;
+import com.framework.Utilies.JsonData;
 import com.framework.Utilies.PropertiesFile;
 import com.framework.Utilies.RandomString;
 
-
-public class Tc01 extends BrowserSetup {
+public class Tc01 extends InvokeSetup {
+	String name;
 
 	@Test
-	public void create() throws InterruptedException {
-		Authenticattion authentication = new Authenticattion(driver);
+	public void createPlaybook() throws InterruptedException, FileNotFoundException {
+		Authentication authentication = new Authentication(driver);
+		JsonData json = new JsonData(PropertiesFile.getdata("url"));
 		authentication.twoFactor();
-		Thread.sleep(90000);
+		Thread.sleep(10000);
 		Playbook playbook = new Playbook(driver);
 		RandomString random = new RandomString();
 		playbook.listpage().createPlayBook().click();
-		String name = random.name();
+		name = random.name();
 
 		playbook.createPlaybook().name().setText(name);
 		playbook.createPlaybook().description().setText(random.Description());
@@ -32,8 +36,6 @@ public class Tc01 extends BrowserSetup {
 		playbook.createPlay().selectAllRegions().click();
 		playbook.createPlay().selectAllServices().click();
 		playbook.createPlay().create().click();
-		
-		logger.info(random.name()+ " Play Created");  
 		playbook.navigation().next().click();
 		Thread.sleep(3000);
 		playbook.createPlaybook().allFrameworks().click();
@@ -46,14 +48,32 @@ public class Tc01 extends BrowserSetup {
 		playbook.createPlaybook().schedule().meridiem(PropertiesFile.getdata("noon")).click();
 		Assert.assertEquals(true, playbook.createPlaybook().schedule().publish().isDisplayed());
 		playbook.createPlaybook().schedule().publish().click();
-		logger.info("Playbook Created successfully    "+name);  
+
 		Assert.assertEquals(name, playbook.summary().getplaybookName().getText());
 		playbook.summary().viewList().click();
 		playbook.listpage().search().click();
-		logger.info("Playbook List page opend "+name); 
+
 		playbook.listpage().searchInput().setText(name);
 		playbook.listpage().selectPlaybook(name).click();
-		logger.info(name + " of Playbook Dashboard page Displayed"); 
+
 	}
 
+	@Test
+	public void updatePlaybook() throws InterruptedException {
+
+		Authentication authentication = new Authentication(driver);
+		authentication.twoFactor();
+		Thread.sleep(5000);
+		Playbook playbook = new Playbook(driver);
+		playbook.listpage().search().click();
+		playbook.listpage().searchInput().setText("sElrsEavmq");
+		Assert.assertEquals(false, playbook.listpage().selectPlaybook("sElrsEavmq").isVisible());
+		playbook.listpage().selectPlaybook("sElrsEavmq").click();
+//		playbook.dashboard().playbookSatus().getText().equalsIgnoreCase("");
+//		String PbId = driver.getCurrentUrl().substring(48, 84);		
+//		String PbId="0234d24f-89d5-495d-a57b-d120acafe5b2";
+//		RestAssured.baseURI =  PropertiesFile.getProperty("runs") + "" + PbId + "";
+//		System.out.println(APICalls.getPlaybookId().getString("data[0].counts.passed"));
+//		
+	}
 }

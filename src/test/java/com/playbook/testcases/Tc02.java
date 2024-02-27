@@ -3,18 +3,22 @@ package com.playbook.testcases;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.framework.Baseclass.BrowserSetup;
+import com.framework.Baseclass.InvokeSetup;
 import com.framework.Pages.Playbook;
-import com.framework.Utilies.Authenticattion;
+import com.framework.Utilies.Authentication;
+import com.framework.Utilies.JsonData;
 import com.framework.Utilies.PropertiesFile;
 import com.framework.Utilies.RandomString;
 import com.framework.Utilies.SelectList;
 
-public class Tc02 extends BrowserSetup {
+public class Tc02 extends InvokeSetup {
+
 	@Test
 	public void CreateNew() throws InterruptedException {
 
-		Authenticattion authentication = new Authenticattion(driver);
+		Authentication authentication = new Authentication(driver);
+		// JsonData json=new JsonData(PropertiesFile.getdata("url"));
+
 		authentication.twoFactor();
 		Thread.sleep(90000);
 		SelectList list = new SelectList(driver);
@@ -63,11 +67,10 @@ public class Tc02 extends BrowserSetup {
 		playbook.createPlaybook().schedule().meridiem(PropertiesFile.getdata("noon")).click();
 		Assert.assertEquals(true, playbook.createPlaybook().schedule().publish().isDisplayed());
 		playbook.createPlaybook().schedule().publish().click();
-		logger.info("Playbook Created successfully    "+name);  
-		
+
 		Assert.assertEquals(name, playbook.summary().getplaybookName().getText());
 		playbook.summary().viewDetails().click();
-		logger.info(name + " of Playbook Dashboard page Displayed"); 
+
 	}
 
 }

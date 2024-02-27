@@ -14,10 +14,6 @@ public class CreatePlay {
 	public CreatePlay(WebDriver driver) {
 		this.driver = driver;
 	}
-	
-//	public Button selectAccountsToInclude() {
-//		return new Button(driver, PropertiesFile.getElement("selectaccountsToInclude"));
-//	}
 
 	public TextField name() {
 		return new TextField(driver, PropertiesFile.getElement("playName"));

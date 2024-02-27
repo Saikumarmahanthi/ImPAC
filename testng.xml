@@ -4,13 +4,15 @@
 	<listeners>
 		<listener class-name="com.framework.listener.CustomListener"></listener>
 	</listeners>
-	<test thread-count="2" name="dashboard">
+	<test thread-count="2" name="create">
 		<parameter name="browser" value="chrome"></parameter>
 		<classes>
-			<class name="com.playbook.testcases.Tc03" />
+			<class name="com.playbook.testcases.Tc01" />
 		</classes>
-	</test>	
-	<!--	
-	Test -->
+	</test>
+	
 </suite> <!--
 Suite -->
+
+
+

@@ -20,8 +20,8 @@ public class Button {
 	 */
 	public void click() {
 		Actions action = new Actions(driver);
-		action.moveToElement(element).build().perform();
-		element.click();
+		action.moveToElement(element).click().build().perform();
+		
 	}
 
 	/*

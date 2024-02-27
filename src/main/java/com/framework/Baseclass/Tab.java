@@ -11,6 +11,7 @@ public class Tab {
 	public Tab(WebDriver driver, String label) {
 		this.driver = driver;
 		this.label = label;
+		
 	}
 
 	/*

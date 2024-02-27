@@ -1,27 +1,36 @@
 package com.framework.Utilies;
 
-import java.io.File;
-import java.io.IOException;
-
-import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
+import com.aventstack.extentreports.reporter.configuration.Theme;
 
 public class Reports {
-    public static String capture(WebDriver driver,String screenShotName) 
-    {
-        TakesScreenshot ts = (TakesScreenshot)driver;
-        File source = ts.getScreenshotAs(OutputType.FILE);
-        String dest = System.getProperty("user.dir") +"imPAC"+screenShotName+".png";
-        File destination = new File(dest);
-        try {
-			FileUtils.copyFile(source, destination);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}        
-                     
-        return dest;
-    }
+
+	public static ExtentSparkReporter spark;
+	public static ExtentReports extent;
+
+	/*
+	 * This class configures Extent Reports to generate HTML reports in a separate
+	 * folder of the specified path
+	 */
+
+	public static ExtentReports generateReports() {
+
+		extent = new ExtentReports();
+		spark = new ExtentSparkReporter(System.getProperty("user.dir") + "\\test-output\\ExtentReport\\Reports.html");
+		extent.attachReporter(spark);
+		spark.config().setReportName("ImPAC Test Results");
+		spark.config().setDocumentTitle("Int02 Environment");
+		spark.config().setTimeStampFormat("dd/MM/yyyy hh:mm:ss");
+		spark.config().setTheme(Theme.DARK);
+
+		extent.setSystemInfo("Application URL", PropertiesFile.getProperty("url"));
+		extent.setSystemInfo("Browser Name", PropertiesFile.getProperty("browser"));
+		extent.setSystemInfo("Email Id", PropertiesFile.getProperty("Email"));
+		extent.setSystemInfo("User Name ", "M Saikumar");
+
+		return extent;
+
+	}
+
 }

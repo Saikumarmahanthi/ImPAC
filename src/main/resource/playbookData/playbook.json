@@ -1,0 +1,14 @@
+{
+	"account": [
+		"125",
+		"6985"
+	],
+	"regions": [
+		"us-east-2",
+		"us-west-1"
+	],
+	"services": [
+		"IAM_ROLE",
+		"IAM_POLICY"
+	]
+}

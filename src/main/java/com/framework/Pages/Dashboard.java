@@ -12,11 +12,32 @@ import com.framework.Baseclass.TextField;
 public class Dashboard {
 
 	WebDriver driver;
-
 	public Dashboard(WebDriver driver) {
 		this.driver = driver;
 	}
 
+	public TextField playbookSatus() {
+		return new TextField(driver, "//div[@data-tesid='runStatus']/span");
+	}
+	
+	
+	public TextField title() {
+		return new TextField(driver, "//span[text()='Dashboard']");
+	}
+	
+		
+	public Button run() {
+		return new Button(driver, "//div[@data-testid='runPlaybook']");
+	}
+	public Button abort() {
+		return new Button(driver, "//div[@data-testid='abortPlaybook']");
+	}
+	
+	public void viewAsset() {
+		Button button=new Button(driver, "//div[text()='View Assets']");
+		button.click();
+	}
+		
 	public Button ellipsis() {
 		return new Button(driver, "//div[@class='ellipsisClass']");
 	}
@@ -25,20 +46,15 @@ public class Dashboard {
 		return new Button(driver, "//div[@class='menu_data' and text()='" + label + "']");
 	}
 
-	public Button playbookSatus(String label) {
-		return new Button(driver, "//div[text()='" + label + " Playbook']");
-	}
 
+	
 	public Button tab(String label) {
 		return new Button(driver, "//button[@data-testid='" + label + "']");
 	}
 
+	
 	public Button waiverExemption() {
 		return new Button(driver, "//button[text()='Request Exemption']");
-	}
-
-	public Button viewAsset() {
-		return new Button(driver, "//div[text()='View Assets']");
 	}
 
 	public Button runslist() {

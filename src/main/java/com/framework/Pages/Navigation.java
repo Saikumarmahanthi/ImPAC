@@ -13,18 +13,26 @@ public class Navigation {
 		this.driver = driver;
 	}
 
+	/*
+	 * This method uses the Button Class to click the "Next" button on the Specific
+	 * page.
+	 */
 	public Button next() {
 		return new Button(driver, PropertiesFile.getElement("next"));
 	}
 
 	/*
 	 * This method uses the Button Class to click the "Cancel" button on the
-	 * describe page.
-	 * 
+	 * Specific page.
 	 */
 	public Button cancel() {
 		return new Button(driver, PropertiesFile.getElement("cancel"));
 	}
+
+	/*
+	 * This method uses the Button Class to click the "Back" button on the Specific
+	 * page.
+	 */
 	public Button back() {
 		return new Button(driver, PropertiesFile.getElement("back"));
 	}
