@@ -11,41 +11,17 @@ public class Menu {
 	public Menu(WebDriver driver) {
 		this.driver = driver;
 	}
-
-	public Button select() {
-		return new Button(driver, "");
+	public Button select(String label) {
+		return new Button(driver, "//div[text()='"+label+"']");
 	}
-
+	public Button expand() {
+		return new Button(driver, "//img[@class='_expand_icon_g7jr7_45']");
+	}
+	public Button title(String title) {
+		return new Button(driver, "//span[text()='"+title+"']");
+	}	
 	public Dropdown playbookName() {
 		return new Dropdown(driver, "");
-	}
-
-	public Button dashboard() {
-		return new Button(driver, "");
-	}
-
-	public Button configuration() {
-		return new Button(driver, "");
-	}
-
-	public Button scores() {
-		return new Button(driver, "");
-	}
-
-	public Button policies() {
-		return new Button(driver, "");
-	}
-
-	public Button violations() {
-		return new Button(driver, "");
-	}
-
-	public Button changeLog() {
-		return new Button(driver, "");
-	}
-
-	public Button complianceImpact() {
-		return new Button(driver, "");
 	}
 
 	public Button runPlaybook() {

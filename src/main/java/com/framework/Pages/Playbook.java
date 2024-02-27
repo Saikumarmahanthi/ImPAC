@@ -33,6 +33,8 @@ public class Playbook {
 	public Dashboard dashboard() {
 		return new Dashboard(driver);
 	}
-	
+	public Menu sideMenu() {
+		return new Menu(driver);
+	}
 
 }
