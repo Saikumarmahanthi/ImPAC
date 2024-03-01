@@ -13,7 +13,7 @@ import io.restassured.RestAssured;
 
 public class Tc03 extends InvokeSetup {
 	@Test
-	public void runDetails() throws InterruptedException {
+	public void dashboard() throws InterruptedException {
 
 		Authentication authentication = new Authentication(driver);
 		authentication.twoFactor();
@@ -25,8 +25,9 @@ public class Tc03 extends InvokeSetup {
 		playbook.listpage().selectPlaybook("sElrsEavmq").click();
 		playbook.dashboard().playbookSatus().getText().equalsIgnoreCase("");
 		String PbId = driver.getCurrentUrl().substring(48, 84);
+		
 		RestAssured.baseURI = PropertiesFile.getProperty("runs") + "" + PbId + "";
-		System.out.println(APICalls.getPlaybookId().getString("data[0].counts.passed"));
+		//System.out.println(APICalls.getPlaybookId().getString("data[0].counts.passed"));
 
 	}
 }

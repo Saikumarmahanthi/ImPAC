@@ -72,4 +72,21 @@ public class PropertiesFile {
 	public static String getdata(String key) {
 		return properties.getProperty(key);
 	}
+	
+	static {
+		try {
+			FileInputStream url = new FileInputStream(
+					System.getProperty("user.dir") + "\\src\\main\\resource\\Properties\\config.property\\Api.config");
+			properties.load(url);
+			url.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static String geturl(String key) {
+		return properties.getProperty(key);
+	}
+	
+	
 }

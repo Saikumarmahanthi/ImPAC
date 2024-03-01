@@ -11,11 +11,12 @@ public class Menu {
 	public Menu(WebDriver driver) {
 		this.driver = driver;
 	}
-	public Button select(String label) {
-		return new Button(driver, "//div[text()='"+label+"']");
+	public void select(String label) {
+		Button select=new Button(driver, "//div[text()='"+label+"']");
+		select.click();
 	}
 	public Button expand() {
-		return new Button(driver, "//img[@class='_expand_icon_g7jr7_45']");
+		return new Button(driver, "//*[@id='root']/div/div[2]/div/div[1]/div/div/div[1]/img");
 	}
 	public Button title(String title) {
 		return new Button(driver, "//span[text()='"+title+"']");

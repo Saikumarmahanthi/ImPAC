@@ -36,5 +36,9 @@ public class Playbook {
 	public Menu sideMenu() {
 		return new Menu(driver);
 	}
+	
+	public Inventry inventry() {
+		return new Inventry(driver);
+	}
 
 }

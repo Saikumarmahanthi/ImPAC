@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.playbook.testcases.Tc04">
+      <class name="com.playbook.testcases.Tc06">
         <methods>
           <include name="afterMethod"/>
           <include name="beforeMethod"/>
-          <include name="sideMenu"/>
+          <include name="configuration"/>
         </methods>
-      </class> <!-- com.playbook.testcases.Tc04 -->
+      </class> <!-- com.playbook.testcases.Tc06 -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
